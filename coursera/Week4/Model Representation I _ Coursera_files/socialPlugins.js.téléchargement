@@ -1,0 +1,1 @@
+define("nls/fr/socialPlugins",["require","exports","module"],function(require,exports,module){"use strict";module.exports={'Press the "…" menu to share with friends.':"Appuyez sur le menu « … » pour partager avec des amis.","Scan QR code using WeChat. ":"Scannez le code QR en utilisant WeChat. "}});

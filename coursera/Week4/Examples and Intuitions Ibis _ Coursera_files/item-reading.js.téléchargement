@@ -1,0 +1,1 @@
+define("nls/fr/item-reading",["require","exports","module"],function(require,exports,module){"use strict";module.exports={Complete:"Terminer","Mark as completed":"Marquer comme terminé"}});

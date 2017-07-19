@@ -1,0 +1,1 @@
+define("bundles/assess/questionTypes/checkboxPoll/student/nls/fr/headerTemplate",["require","exports","module"],function(require,exports,module){"use strict";module.exports={"Checkbox Poll":"Case Sondage"}});
