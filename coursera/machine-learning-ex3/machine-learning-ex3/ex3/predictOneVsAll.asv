@@ -10,10 +10,10 @@ function p = predictOneVsAll(all_theta, X)
 
 m = size(X, 1);
 num_labels = size(all_theta, 1);
-
+fprintf(['num_labels => %d\n'], num_labels);
 % You need to return the following variables correctly 
 p = zeros(size(X, 1), 1);
-%fprintf(['size(p) => %d\n'], size(p));
+fprintf(['size(p) => %d\n'], size(p));
 % Add ones to the X data matrix
 X = [ones(m, 1) X];
 
@@ -29,29 +29,14 @@ X = [ones(m, 1) X];
 %       are in rows, then, you can use max(A, [], 2) to obtain the max 
 %       for each row.
 %       
-%fprintf(['size of all_theta*XT => %d\n'], size(all_theta*X'));
-%all_theta
-%X(4000:4500, 1:20)
-    %for i=1:size(p, 1)
-        %fprintf(['i = %d\n'], i);
-        %fprintf(['size of all_theta(i, :) => %d\n'], size(all_theta(i,
-        %:)));
-        %all_theta
-        %h = sigmoid(all_theta * X');
-        h = sigmoid((all_theta*X')');
-        [val_max, idx_max] = max(h, [], 2);
-        %fprintf(['size i_max = %d\n'], size(idx_max));
-        p = idx_max;
-        
-        %(all_theta * X')'
-        %fprintf(['size of val = %d\n'], size(val));
-        %fprintf(['size of idx = %d\n'], size(idx));
-        
-        %if (i < 10)
-           %fprintf(['i = %d, idx = %d and val = %d\n'], i, idx, val);
-        %end
-    %end
-  %p(i, 1) = all_theta(i, idx);
+for i=1:size(p, 1)
+  [val, idx] = max(X*all_theta', [], 2);
+  %fprintf(['idx = %d and val = %d\n'], idx, val);
+  p(i) = all_theta(idx);
+end
+
+
+
 
 
 

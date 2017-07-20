@@ -17,7 +17,7 @@
 %
 
 %% Initialization
-%clear ; close all; clc
+clear ; close all; clc
 
 %% Setup the parameters you will use for this part of the exercise
 input_layer_size  = 400;  % 20x20 Input Images of Digits
@@ -73,8 +73,9 @@ pause;
 %% ============ Part 2b: One-vs-All Training ============
 fprintf('\nTraining One-vs-All Logistic Regression...\n')
 
-%lambda = 0.1;
-%[all_theta] = oneVsAll(X, y, num_labels, lambda);
+
+lambda = 0.1;
+[all_theta] = oneVsAll(X, y, num_labels, lambda);
 
 fprintf('Program paused. Press enter to continue.\n');
 pause;
