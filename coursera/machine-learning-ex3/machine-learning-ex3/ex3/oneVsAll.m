@@ -10,7 +10,8 @@ function [all_theta] = oneVsAll(X, y, num_labels, lambda)
 % Some useful variables
 m = size(X, 1);
 n = size(X, 2);
-
+fprintf(['m => %d\n'], m);
+fprintf(['n => %d\n'], n);
 % You need to return the following variables correctly 
 all_theta = zeros(num_labels, n + 1);
 
@@ -48,11 +49,25 @@ X = [ones(m, 1) X];
 %         fmincg (@(t)(lrCostFunction(t, X, (y == c), lambda)), ...
 %                 initial_theta, options);
 %
+theta = zeros(num_labels, n + 1);
 
-initial_theta = zeros(n + 1, 1);
+fprintf(['size of theta => %f\n'], size(theta));
 
-option = optimset('GradObj', 'on', 'MaxIter', 50);
+%iterate through each example
+for i = 1:m
+  %iterate through each class (1 to 10)
+  for c = 1:num_labels
+    fprintf(['loop\n']);
+    initial_theta = zeros(n + 1, 1);
+    fprintf(['size of theta*initial_theta => %f\n'], size(theta*initial_theta));
+    fprintf(['size of thetaT*Xi: => %f\n'], size(theta'*X(i)*X));
 
+    options = optimset('GradObj', 'on', 'MaxIter', 50);
+    %for each class, compute the max theta 1x10
+    theta = fmincg(@(t)(lrCostFunction(theta*initial_theta, theta'*X(i), (y == c), lambda)), initial_theta, options);
+  end
+end
+  
 
 
 
