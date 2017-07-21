@@ -101,17 +101,17 @@ Delta2 = zeros(10, 26, 'double');
 %Delta2 = zeros(4, 3, 'double');
 
 d2 = zeros(26, 1, 'double');
-d3 = zeros(3,4, 'double');
+d3 = zeros(3, 4, 'double');
 
-d3 = a3 - y_matrix;
+d3 = a3 - y_matrix; %10x5000
 d2 = (d3 * Theta2(:,2:end)) .* sigmoidGradient(z2);
 size(d2)
 size(a1)
 
 Delta1 = d2' * a1;
 Delta2 = d3' * a2;
-Theta1_grad = Delta1 ./ m;
-Theta2_grad = Delta1 ./ m;
+Theta1_grad = Delta1 / m;
+Theta2_grad = Delta2 / m;
 for t = 1:m
     for k = 1:num_labels
         
