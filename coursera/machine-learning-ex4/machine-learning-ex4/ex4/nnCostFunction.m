@@ -62,11 +62,45 @@ Theta2_grad = zeros(size(Theta2));
 %               and Theta2_grad from Part 2.
 %
 
+a1 = [ones(m, 1) X];
+fprintf(['size of a1 = %d\n'], size(a1));
+%fprintf(['number of layers = %d\n'], size(nn_params));
+z2 = a1 * Theta1'; %result = 5000x25    
+a2 = [ones(size(z2, 1), 1) sigmoid(z2)];
+fprintf(['size of a2 = %d\n'], size(a2));
+z3 = a2 * Theta2';
+a3 = sigmoid(z3);
+fprintf(['size of a3 = %d\n'], size(a3));
 
+    %iterate through all the training set
+    for t = 1:m
+        for l = 1:num_labels
+            
+        %sigma3 = a3 - 
+        %sigma2 = Theta2' * sigma3 .* a2';
+        %sigma1 = Theta1' * sigma2 .* a1';
+        %delta(l) = 
+            
+            J = -y'
+            %fprintf(['-y => %f\n'], y');
+            
+        end
+        %fprintf(['t = %d\n'], t);
 
+        %Delta2 = ...
+        %Tip: One handy method for excluding a column of bias units is to 
+        %use the notation SomeMatrix(:,2:end). This selects all of the rows 
+        %of a matrix, and omits the entire first column.
+        
+        %for l = 1:L
+        %fprintf(['size of a1 after => %d\n'], size(a1));
+        %compute gama(l)j which is the error of node in layer l
+        %gama = 
+      
 
+    end
 
-
+    J = (1/m)*J;
 
 
 
