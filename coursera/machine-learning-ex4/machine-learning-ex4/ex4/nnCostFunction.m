@@ -68,7 +68,7 @@ a2 = [ones(size(z2, 1), 1) sigmoid(z2)];
 z3 = a2 * Theta2';
 a3 = sigmoid(z3);
 %a3
-fprintf(['size of a3 = %d\n'], size(a3));
+%fprintf(['size of a3 = %d\n'], size(a3));
 
 
 eye_matrix = eye(num_labels);
@@ -105,36 +105,16 @@ d3 = zeros(3, 4, 'double');
 
 d3 = a3 - y_matrix; %10x5000
 d2 = (d3 * Theta2(:,2:end)) .* sigmoidGradient(z2);
-size(d2)
-size(a1)
+
+%size(d2)
+%size(a1)
 
 Delta1 = d2' * a1;
 Delta2 = d3' * a2;
+
 Theta1_grad = Delta1 / m;
 Theta2_grad = Delta2 / m;
-for t = 1:m
-    for k = 1:num_labels
-        
-        %d3(k) = a3(k) - y_matrix(k);
-        
-        %- y_matrix(k)
-        %fprintf(['size of d3 = %d\n'], size(d3));
-        %fprintf(['size of sigmograd = %d\n'], sigmoidGradient(z2));
-        %d2 = d3 * Theta2(:,2:end);
-        %Delta1 = d2 * a1;
-        %Delta2 = d3 * d2;
-        %d2 = Theta2' * d3' .* sigmoidGradient(z2);
-       % Delta1 = Delta1(2:end);
-        %Delta2 = Delta2(2:end);
-        
-    end
-    
-end
-%d3(:,:)
-%d2(:,:)
-%Delta2
-%Delta1
-%Theta1_grad
+
 % -------------------------------------------------------------
 
 % =========================================================================
