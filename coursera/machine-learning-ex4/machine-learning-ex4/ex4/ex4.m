@@ -39,10 +39,10 @@ m = size(X, 1);
 sel = randperm(size(X, 1));
 sel = sel(1:100);
 
-displayData(X(sel, :));
+%displayData(X(sel, :));
 
-fprintf('Program paused. Press enter to continue.\n');
-pause;
+%fprintf('Program paused. Press enter to continue.\n');
+%pause;
 
 
 %% ================ Part 2: Loading Parameters ================
@@ -87,6 +87,8 @@ pause;
 %  Once your cost function implementation is correct, you should now
 %  continue to implement the regularization with the cost.
 %
+
+
 
 fprintf('\nChecking Cost Function (w/ Regularization) ... \n')
 

@@ -66,25 +66,38 @@ a1 = [ones(m, 1) X];
 fprintf(['size of a1 = %d\n'], size(a1));
 %fprintf(['number of layers = %d\n'], size(nn_params));
 z2 = a1 * Theta1'; %result = 5000x25    
+%z2
 a2 = [ones(size(z2, 1), 1) sigmoid(z2)];
 fprintf(['size of a2 = %d\n'], size(a2));
+%a2
 z3 = a2 * Theta2';
 a3 = sigmoid(z3);
+%a3
 fprintf(['size of a3 = %d\n'], size(a3));
 
+Delta1 = zeros(25, 401, 'double');
+Delta2 = zeros(10, 26, 'double');
+
+size(Delta2)
+
+
+%y_matrix = eye(num_labels)
+%y_matrix = eye_matrix(y,:)
     %iterate through all the training set
     for t = 1:m
-        for l = 1:num_labels
+        %for l = 1:num_labels
             
         %sigma3 = a3 - 
         %sigma2 = Theta2' * sigma3 .* a2';
         %sigma1 = Theta1' * sigma2 .* a1';
         %delta(l) = 
             
-            J = -y'
-            %fprintf(['-y => %f\n'], y');
             
-        end
+            %J = -y'(t)
+            %fprintf(['-y(t) => %f, size(y(t), 1) -> %d\n'], y(t), size(((y(t))')));
+            %y(t)
+            
+        %end
         %fprintf(['t = %d\n'], t);
 
         %Delta2 = ...
