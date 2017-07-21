@@ -87,6 +87,10 @@ Theta1_grad = zeros(size(Theta1));
 Theta2_grad = zeros(size(Theta2));        
 
 % regularization 
+%Tip (from teacher): One handy method for excluding a column of bias units is to 
+%use the notation SomeMatrix(:,2:end). This selects all of the rows 
+%of a matrix, and omits the entire first column.
+
 p = lambda/(2*m) * ( sum(sum((  (Theta1(:,2:end).^2)  ))) + sum(sum((Theta2(:,2:end).^2))) );
 
 % computing cost function
@@ -94,9 +98,7 @@ J = (sum(sum(-y_matrix .* log(a3) - ((1 - y_matrix) .* log(1 - a3)))))/m + p;
 
 
 %Delta2 = ...
-%Tip: One handy method for excluding a column of bias units is to 
-%use the notation SomeMatrix(:,2:end). This selects all of the rows 
-%of a matrix, and omits the entire first column.
+
 
 
 % -------------------------------------------------------------
