@@ -25,11 +25,6 @@ Theta2 = reshape(nn_params((1 + (hidden_layer_size * (input_layer_size + 1))):en
 % Setup some useful variables
 m = size(X, 1);
          
-% You need to return the following variables correctly 
-J = 0;
-Theta1_grad = zeros(size(Theta1));
-Theta2_grad = zeros(size(Theta2));
-
 % ====================== YOUR CODE HERE ======================
 % Instructions: You should complete the code by working through the
 %               following parts.
@@ -63,17 +58,17 @@ Theta2_grad = zeros(size(Theta2));
 %
 
 a1 = [ones(m, 1) X];
-fprintf(['size of a1 = %d\n'], size(a1));
+%fprintf(['size of a1 = %d\n'], size(a1));
 %fprintf(['number of layers = %d\n'], size(nn_params));
 z2 = a1 * Theta1'; %result = 5000x25    
 %z2
 a2 = [ones(size(z2, 1), 1) sigmoid(z2)];
-fprintf(['size of a2 = %d\n'], size(a2));
+%fprintf(['size of a2 = %d\n'], size(a2));
 %a2
 z3 = a2 * Theta2';
 a3 = sigmoid(z3);
 %a3
-fprintf(['size of a3 = %d\n'], size(a3));
+%fprintf(['size of a3 = %d\n'], size(a3));
 
 Delta1 = zeros(25, 401, 'double');
 Delta2 = zeros(10, 26, 'double');
@@ -81,17 +76,27 @@ Delta2 = zeros(10, 26, 'double');
 eye_matrix = eye(num_labels);
 y_matrix = eye_matrix(y,:);
 %y_matrix
-fprintf(['size of y_matrix = %d\n'], size(y_matrix));
+%fprintf(['size of y_matrix = %d\n'], size(y_matrix));
    
         %Delta2 = Theta2' * sigma3 .* a2';
         %Delta1 = Theta1' * sigma2 .* a1';
-         
-J = sum(sum(-y_matrix .* log(a3) - ((1 - y_matrix) .* log(1 - a3))));
-J = J/m;
-        %Delta2 = ...
-        %Tip: One handy method for excluding a column of bias units is to 
-        %use the notation SomeMatrix(:,2:end). This selects all of the rows 
-        %of a matrix, and omits the entire first column.
+
+% You need to return the following variables correctly 
+J = 0;
+Theta1_grad = zeros(size(Theta1));
+Theta2_grad = zeros(size(Theta2));        
+
+% regularization 
+p = lambda/(2*m) * ( sum(sum((  (Theta1(:,2:end).^2)  ))) + sum(sum((Theta2(:,2:end).^2))) );
+
+% computing cost function
+J = (sum(sum(-y_matrix .* log(a3) - ((1 - y_matrix) .* log(1 - a3)))))/m + p;
+
+
+%Delta2 = ...
+%Tip: One handy method for excluding a column of bias units is to 
+%use the notation SomeMatrix(:,2:end). This selects all of the rows 
+%of a matrix, and omits the entire first column.
 
 
 % -------------------------------------------------------------
