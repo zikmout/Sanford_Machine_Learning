@@ -14,12 +14,10 @@ X_poly = zeros(numel(X), p);
 %               column of X contains the values of X to the p-th power.
 %
 % 
-%fprintf(['p = > %d\n'], p);
-
-for j = 1:p
-    X_poly(:,j) = X.^j;
-end;
-
+fprintf(['p = > %d\n'], p);
+for i = 1:m
+    for j = 1:p
+        X_poly(i, p) = X_poly(i,
 
 
 
