@@ -88,15 +88,15 @@ lambda = 0;
 [theta] = trainLinearReg([ones(m, 1) X], y, lambda);
 
 %  Plot fit over the data
-%plot(X, y, 'rx', 'MarkerSize', 10, 'LineWidth', 1.5);
+plot(X, y, 'rx', 'MarkerSize', 10, 'LineWidth', 1.5);
 xlabel('Change in water level (x)');
 ylabel('Water flowing out of the dam (y)');
 hold on;
-%plot(X, [ones(m, 1) X]*theta, '--', 'LineWidth', 2)
+plot(X, [ones(m, 1) X]*theta, '--', 'LineWidth', 2)
 hold off;
 
 %fprintf('Program paused. Press enter to continue.\n');
-pause;
+%pause;
 
 
 %% =========== Part 5: Learning Curve for Linear Regression =============
@@ -125,7 +125,7 @@ for i = 1:m
 end
 
 fprintf('Program paused. Press enter to continue.\n');
-pause;
+%pause;
 
 %% =========== Part 6: Feature Mapping for Polynomial Regression =============
 %  One solution to this is to use polynomial regression. You should now
