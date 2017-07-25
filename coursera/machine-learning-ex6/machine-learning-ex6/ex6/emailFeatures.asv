@@ -46,11 +46,12 @@ n = 1899;
 
 % You need to return the following variables correctly.
 x = zeros(n, 1);
-x(word_indices) = 1;
-% for i = 1:length(word_indices)
-%     % already initialized at 0
-%     x(word_indices(i)) = 1;
-% end
+
+for i = 1:length(word_indices)
+    % already initialized at 0
+    if word_indices(i) ~= 0
+        x(i) = 1; 
+end
 
 
 
