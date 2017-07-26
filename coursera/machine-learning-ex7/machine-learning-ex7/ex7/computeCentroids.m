@@ -26,7 +26,27 @@ centroids = zeros(K, n);
 % Note: You can use a for-loop over the centroids to compute this.
 %
 
+%Randomly initialize K cluster centroids mu(1), mu(2), ..., mu(K)
+%Repeat:
+%    for i = 1 to m:
+%       c(i):= index (from 1 to K) of cluster centroid closest to x(i)
+%    for k = 1 to K:
+%       mu(k):= average (mean) of points assigned to cluster k
 
+counter = zeros(K,1);
+
+for i = 1:m
+    for k = 1:K
+        if idx(i) == k
+            centroids(k,:) = centroids(k,:) + X(i,:);
+            counter(k) = counter(k) + 1;
+        end
+    end
+end
+
+for k = 1:K
+    centroids(k,:) = centroids(k,:) ./ counter(k);
+end
 
 
 

@@ -20,6 +20,23 @@ idx = zeros(size(X,1), 1);
 %
 % Note: You can use a for-loop over the examples to compute this.
 %
+m = size(X,1);
+
+for i = 1:m
+    % mini = 1000000;
+    M = zeros(K, 1);
+    for k = 1:K
+        error = X(i,:) - centroids(k,:);
+        error = error * error';
+        M(k) = sum(error);       
+    end
+    % each entry has to be in range 1 ... K
+    [min_value, min_index]=min(M',[ ],2)
+    %[idx, val] = min(M,[],2);
+    %[M, I] = min(M(:));
+    
+    idx(i) = min_index;
+end
 
 
 
